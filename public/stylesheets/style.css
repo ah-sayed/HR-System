@@ -13,6 +13,7 @@ a{
   background-color: #00629b;
   padding: 20px 0 0 10px;;
   color:#f1f1f1;
+  position: fixed;
 }
 .user-panel .image img{
   margin-bottom:20px;
@@ -37,16 +38,26 @@ nav i{
   color:#1776ae;
 }
 /*NAVBAR END*/
-/*START CONTENT*/
+/*START CONTENT appplicants */
 .content{
-  margin-left: 210px;
   padding: 0px 10px;
 }
 .content #applicants span{
   padding: 7px;
 }
-.input-group-sm .form-control{
+#applicants .input-group-sm .form-control{
   height:auto;
 }
-/*END CONTENT*/
+/*END CONTENT applicants*/
+/*START CALENDAR*/
+.fc-event{
+  color:white!important;
+}
+.fc-icon-left-single-arrow:after {
+  content: "\2039"!important;
+  font-weight: 700;
+  font-size: 200%;
+  top: -7%;
+}
+/* END CALENDAR*/
 
