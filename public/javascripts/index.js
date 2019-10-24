@@ -1,7 +1,7 @@
 //adjusting places of pages
 $(".content").css("margin-left", $(".main-sidebar").width()+5)
 var request = new XMLHttpRequest()
-var url = 'https://jsonplaceholder.typicode.com/users' //dumb data till we get data from backend :D
+var url = 'http://localhost:3000/api/data' //not really sure if this solution is always applicable
 request.open('GET', url, true)
 request.onload = function () {
     var data = JSON.parse(this.response)     
