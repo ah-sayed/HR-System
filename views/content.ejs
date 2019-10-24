@@ -19,12 +19,28 @@
                             <th>Phone</th>
                             <th>Email</th>
                             <th>Status</th>
+                            <th>university</th>
+                            <th>faculty</th>
+
                             <th>Workshop</th>
                             <th>Second Workshop</th>
                         </tr>
                    </thead>
                    <tbody>
+                    <% for(i=0; i < data.length; i++){%>
+                      <tr>
+                        <td><%= data[i].id %></td>
+                        <td><%= data[i].name %></td>
+                        <td><%= data[i].phone %></td>
+                        <td><%= data[i].email %></td>
+                        <td><span class="status label label-success">Approved</span></td>
+                        <td><%= data[i].university %></td>
+                        <td><%= data[i].faculty %></td>
+                        <td><%= data[i].firstChoice %></td>
+                        <td><%= data[i].secondChoice %></td>
 
+                      </tr>
+                    <%}%>
                    </tbody>
               </table>
             </div>
