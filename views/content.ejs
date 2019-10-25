@@ -33,7 +33,17 @@
                         <td><%= data[i].name %></td>
                         <td><%= data[i].phone %></td>
                         <td><%= data[i].email %></td>
-                        <td><span class="status label label-success">Approved</span></td>
+                        <!--<td><span class="status label label-success">Approved</span></td>-->
+                        <td>
+                          <select name="status" onchange="updateStatus()">
+                            <option value="0" class="status">Blacklisted</option>
+                            <option value="1" class="status">Applied</option>
+                            <option value="2" class="status">Called</option>
+                            <option value="3" class="status">interviewed</option>
+                            <option value="4" class="status">accepted</option>
+                            <option value="5" class="status">rejected</option>
+                          </select>
+                        </td>
                         <td><%= data[i].university %></td>
                         <td><%= data[i].faculty %></td>
                         <td><%= data[i].firstChoice %></td>

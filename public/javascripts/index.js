@@ -1,3 +1,4 @@
+
 //adjusting places of pages
 $(".content").css("margin-left", $(".main-sidebar").width()+5)
 function search(){//by name
@@ -18,4 +19,28 @@ function search(){//by name
       }       
     }
 }
-   
+
+
+//drop down menu update applicant stored status in the database
+function updateStatus(){
+
+  //both next params are hard coded values that should be updated later
+  //to get the real id and the new status chosen for the applicant
+  const id = 9;
+  const status = 4;
+
+
+  //make parameters to be sent in the ajax request
+  const params = JSON.stringify({ id: id , status: status});
+  //where the database update will occur
+  const url = '/update/status';
+
+  const xhr = new XMLHttpRequest();
+
+  
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+  xhr.send(params);
+
+}
+
