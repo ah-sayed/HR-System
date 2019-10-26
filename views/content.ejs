@@ -14,7 +14,7 @@
               <div class="call-info">
                 <div class="info-container p-3">
                   <i class="close fa fa-times" aria-hidden="true"></i>
-                  <form class="mt-3 mr-3">
+                  <form class="mt-3 mr-3" method="post">
                     <div class="form-group">
                         <label>Call date:</label>
                         <input type="datetime" class="form-control" name="callDate">
@@ -64,7 +64,7 @@
                         <td><%= data[i].interviewDate %></td>
                         <td><%= data[i].interviewer %></td>
                         <td><%= data[i].note %></td>
-                        <td><button id="call-btn" class="btn">Call</button></td> <!--Needs to be added to the DB-->
+                        <td><button id="call-btn" class="btn">Call</button></td> 
                       </tr>
                       <tr class='full-data'>
                         <td class="data" colspan=13>
@@ -73,8 +73,6 @@
                             <span><strong>Faculty: </strong><%= data[i].faculty %></span><br><br>
                             <span><strong>Phone: </strong><%= data[i].phone %></span>
                             <span><strong>E-mail: </strong><%= data[i].email%></span><br><br>
-                            <span><strong>Created At: </strong><%= data[i].createdAt%></span>
-                            <span><strong>Updated At: </strong><%= data[i].updatedAt%></span>
                         </td>
                        
                       </tr>

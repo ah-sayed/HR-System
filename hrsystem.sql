@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2019 at 10:01 PM
+-- Generation Time: Oct 26, 2019 at 07:52 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -39,8 +39,11 @@ CREATE TABLE `participants` (
   `secondChoice` varchar(128) NOT NULL,
   `phone` varchar(128) NOT NULL,
   `interviewDate` date NOT NULL,
+  `interviewTime` time NOT NULL,
+  `callDate` date NOT NULL,
+  `callTime` time NOT NULL,
   `interviewer` int(11) NOT NULL,
-  `status` varchar(50) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `note` varchar(1000) NOT NULL,
   `createdAt` date NOT NULL,
   `updatedAt` date NOT NULL
@@ -50,9 +53,9 @@ CREATE TABLE `participants` (
 -- Dumping data for table `participants`
 --
 
-INSERT INTO `participants` (`id`, `name`, `email`, `university`, `faculty`, `year`, `firstChoice`, `secondChoice`, `phone`, `interviewDate`, `interviewer`, `status`, `note`, `createdAt`, `updatedAt`) VALUES
-(1, 'nice', 'nice', 'nice', 'nice', 'nice', 'nice', 'nice', 'nice', '2019-10-01', 5, 'nice', 'nice', '2019-10-23', '2019-10-23'),
-(9, '', '', '', '', '', '', '', '', '0000-00-00', 0, '', '', '0000-00-00', '0000-00-00');
+INSERT INTO `participants` (`id`, `name`, `email`, `university`, `faculty`, `year`, `firstChoice`, `secondChoice`, `phone`, `interviewDate`, `interviewTime`, `callDate`, `callTime`, `interviewer`, `status`, `note`, `createdAt`, `updatedAt`) VALUES
+(1, 'nice', 'nice', 'nice', 'nice', 'nice', 'nice', 'nice', 'nice', '2019-11-24', '11:23:34', '2019-09-25', '19:47:22', 5, 2, 'nice', '2019-10-23', '2019-10-26'),
+(9, '', '', '', '', '', '', '', '', '0000-00-00', '00:00:00', '0000-00-00', '00:00:00', 0, 4, '', '0000-00-00', '2019-10-25');
 
 --
 -- Indexes for dumped tables
