@@ -48,6 +48,56 @@ nav i{
 #applicants .input-group-sm .form-control{
   height:auto;
 }
+#applicants .call-info{
+  position: fixed;
+  border-radius: 10px;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.6);
+  display: none;
+}
+#applicants .call-info .info-container{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  background-color:#f1f1f1;
+  box-shadow: 0 0 5px;
+}
+#applicants .status{
+  border-radius: 7px;
+}
+#applicants .full-data{
+  position: fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background-color: rgba(0, 0, 0, 0.397);
+  display: none;;
+}
+#applicants .less-data{
+  cursor: pointer;
+}
+#applicants .full-data .data{
+  position: absolute;
+  border-radius: 10px;
+  top: 50%;
+  left: 45%;
+  margin-top: -50px;
+  margin-left: -50px;
+  background-color:#f1f1f1;
+  box-shadow: 0 0 5px;
+}
+#applicants .full-data .data i{
+  position: absolute;
+  top:10px;
+  right:10px;
+  cursor: pointer;
+}
 /*END CONTENT applicants*/
 /*START CALENDAR*/
 .fc-event{
