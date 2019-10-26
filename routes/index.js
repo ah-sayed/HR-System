@@ -4,9 +4,6 @@ var router = express.Router();
 const participants = require('../models/Participants')
 /* GET home page. */
 router.get('/', function (req, res, next) {
-
-
-
   //get the participants data from the database
   
   participants.findAll()
@@ -16,7 +13,7 @@ router.get('/', function (req, res, next) {
      //  res.send(JSON.parse(data));
       return res.render('index', { data:JSON.parse(data)});//json Parse is needed! Don't delete it!!
     })
-  });
+});
 module.exports = router;
 
 
