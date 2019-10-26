@@ -29,6 +29,15 @@ const Participant = db.define('participants', {
     interviewDate:{
         type : sequelize.DATE
     },
+    interviewTime:{
+        type : sequelize.TIME
+    },
+    callDate:{
+        type : sequelize.DATE
+    },
+    callTime:{
+        type : sequelize.TIME
+    },
     interviewer:{
         type : sequelize.INTEGER
     },
