@@ -32,8 +32,16 @@ router.post('/', function (req, res, next) {
     returning: true, // needed for affectedRows to be populated
     plain: true      // makes sure that the returned instances are just plain objects
   })
+  .then(success=>{
+    console.log('data updated successfuly');
+    res.redirect('/');
+  })
+  .catch(err=>{
+    console.log(err);
+    res.redirect('/');
+  });
 
-  res.redirect('/')
+  
 });
 
 module.exports = router;
