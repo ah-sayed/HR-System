@@ -58,9 +58,14 @@ nav i{
   background-color: rgba(0,0,0,0.6);
   display: none;
 }
+#applicants button.true{
+  background-color:#008d4c;
+  color:#f1f1f1;
+  padding:.375rem .75rem;
+}
 #applicants .call-info .info-container{
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
   margin-top: -50px;
   margin-left: -50px;

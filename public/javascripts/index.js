@@ -38,12 +38,13 @@ $("#applicants #call-btn").click(function(){
   var dt = new Date();
   var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
   var date = dt.getFullYear() + "/" + dt.getMonth() + "/" + dt.getDate();
+  var pId = $(this).parent().siblings().html()
 
-  $(this).html("Called")
-  $(this).addClass("btn-success");
+  $(this).addClass("true");
   $("#applicants .call-info").css("display","block");
 
   $('input[name="callTime"]').val(time);
   $('input[name="callDate"]').val(date);
+  $('input[name="pId"').val(pId)
   return false;//to stop propagation.
 }) 

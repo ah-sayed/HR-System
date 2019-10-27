@@ -26,6 +26,9 @@ const Participant = db.define('participants', {
     phone:{
         type : sequelize.STRING
     },
+    called:{
+        type : sequelize.BOOLEAN
+    },
     interviewDate:{
         type : sequelize.DATE
     },
@@ -39,7 +42,7 @@ const Participant = db.define('participants', {
         type : sequelize.TIME
     },
     interviewer:{
-        type : sequelize.INTEGER
+        type : sequelize.STRING
     },
     status:{
         type : sequelize.STRING

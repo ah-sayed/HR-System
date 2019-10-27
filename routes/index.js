@@ -9,7 +9,6 @@ router.get('/', function (req, res, next) {
   participants.findAll()
     .then(applicants => {
       const data = JSON.stringify(applicants, null, 1);
-      //console.log("data ya 3amaaaa",data);
      //  res.send(JSON.parse(data));
       return res.render('index', { data:JSON.parse(data)});//json Parse is needed! Don't delete it!!
     })
@@ -18,18 +17,18 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
   console.log(req.body);
   
-  //hard coded the value of the id tell i have some idea of how to get the id 
-
   // the query does a really strange thing if any date was for example 25/11/2019 it store it as day 24
   // stores always the day before the inserted day lol 
+  // googled it bs m3rfsh brdo xD
   participants.update({ 
     callDate: req.body.callDate,
     callTime: req.body.callTime,
-    interviewer: req.body.adminName,
+    interviewer: req.body.adminName,//#changed the Interviewer type to String to store names not Ints#//
     interviewDate: req.body.interviewDate,
-    interviewTime: req.body.interviewTime
+    interviewTime: req.body.interviewTime,
+    called: 1
   }, {
-    where: {id: 9},
+    where: {id: req.body.pId},
     returning: true, // needed for affectedRows to be populated
     plain: true      // makes sure that the returned instances are just plain objects
   })
