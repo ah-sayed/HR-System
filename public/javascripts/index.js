@@ -47,4 +47,24 @@ $("#applicants #call-btn").click(function(){
   $('input[name="callDate"]').val(date);
   $('input[name="pId"').val(pId)
   return false;//to stop propagation.
-}) 
+}); 
+
+
+//drop down menu update applicant stored status in the database using ajax
+function updateStatus(id){
+  //get the status chosen by the user form the dropdown menu
+  const newStatus = $("#updateStatus :selected").val();
+
+  //make parameters to be sent in the ajax request
+  const params = JSON.stringify({ id: id , status: newStatus});
+
+  //where the database update will occur
+  const url = '/update/status';
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+  xhr.send(params);
+
+}
