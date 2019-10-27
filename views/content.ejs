@@ -17,7 +17,7 @@
                   <form class="mt-3 mr-3" method="post">
                       <div class="form-group">
                           <label>Participant's ID:</label>
-                          <input type="number" class="form-control" name="pId">
+                          <input type="number" class="form-control" name="pId" hidden>
                       </div>
                     <div class="form-group">
                         <label>Call date:</label>
@@ -68,7 +68,11 @@
                         <td><%= data[i].interviewDate %></td>
                         <td><%= data[i].interviewer %></td>
                         <td><%= data[i].note %></td>
-                        <td><button id="call-btn" class="btn <%= data[i].called %>">Called</button></td> 
+                        <%if(data[i].called == true){%>
+                          <td><button id="call-btn" class="btn <%= data[i].called %>">Called</button></td>
+                        <%}else{%>
+                          <td><button id="call-btn" class="btn <%= data[i].called %>">Call</button></td>
+                        <%}%>   
                       </tr>
                       <tr class='full-data'>
                         <td class="data" colspan=13>

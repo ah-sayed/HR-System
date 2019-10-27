@@ -40,7 +40,7 @@ $("#applicants #call-btn").click(function(){
   var date = dt.getFullYear() + "/" + dt.getMonth() + "/" + dt.getDate();
   var pId = $(this).parent().siblings().html()
 
-  $(this).addClass("true");
+  //$(this).addClass("true");  //i think this should be added after the call submit is already done and data of interview is stored
   $("#applicants .call-info").css("display","block");
 
   $('input[name="callTime"]').val(time);
