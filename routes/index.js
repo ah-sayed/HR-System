@@ -23,9 +23,10 @@ router.post('/', function (req, res, next) {
   participants.update({ 
     callDate: req.body.callDate,
     callTime: req.body.callTime,
-    interviewer: req.body.adminName,//#changed the Interviewer type to String to store names not Ints#//
+    interviewer: req.body.hrName,//#changed the Interviewer type to String to store names not Ints#//
     interviewDate: req.body.interviewDate,
     interviewTime: req.body.interviewTime,
+    note: req.body.note,
     called: 1
   }, {
     where: {id: req.body.pId},
