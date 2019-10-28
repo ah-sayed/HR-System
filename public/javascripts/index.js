@@ -37,15 +37,19 @@ $("#applicants .call-btn").click(function(){
   let dt = new Date();
   let time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
   let date = dt.getFullYear() + "/" + dt.getMonth() + "/" + dt.getDate();
-  let pId = $(this).parent().siblings().html()
-  let hrName = $(this).parent().parent().find("td.hr-name").html()
+  let pId = $(this).parent().siblings().html();
+  let hrName = $(this).parent().parent().find("td.hr-name").html();
+  let interviewDate = $(this).parent().parent().find("td.interview-date").html()
+  let interviewTime = $(this).parent().parent().find("td.interview-time").html();
 
   $("#applicants .call-info").css("display","block");
 
   $('input[name="callTime"]').val(time);
   $('input[name="callDate"]').val(date);
-  $('input[name="pId"').val(pId)
-  $('input[name="hrName"').val(hrName)
+  $('input[name="pId"').val(pId);
+  $('input[name="hrName"').val(hrName);
+  $('input[name="interviewDate"').val(interviewDate);
+  $('input[name="interviewTime"').val(interviewTime);
   return false;//to stop propagation.
 }); 
 
@@ -68,15 +72,3 @@ function updateStatus(id){
   xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
   xhr.send(params);
 }
-
-///test////
-const url = '/calendar';
-
-const xhr = new XMLHttpRequest();
-xhr.open('GET', url, true);
-xhr.onload = function(){
-  var data = this
-  console.log("boo",data)
-}
-xhr.send()
-
