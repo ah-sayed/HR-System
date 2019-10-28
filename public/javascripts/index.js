@@ -3,9 +3,8 @@ $(".content").css("margin-left", $(".main-sidebar").width()+5)
 //colors of lables.
 
 $(".status").each(function(){
-  //red => rejected, blue =>called, green => accepted, yellow=> applied, purple=>interviewed,black=> blacklist rbna y7mena
   let status = $(this).html();
-  status == "Called"? $(this).addClass("label-primary"): status == "Applied"? $(this).addClass("label-info"): status == "Interviewed"?$(this).addClass("label-warning"): status == "Accepted"?$(this).addClass("label-success"): status == "Rejected"?$(this).addClass=("label-danger"): $(this).addClass("label-default")
+  status == "Called"? $(this).addClass("label-primary"): status == "Applied"? $(this).addClass("label-info"): status == "Interviewed"?$(this).addClass("label-warning"): status == "Accepted"?$(this).addClass("label-success"): status == "Rejected"?$(this).addClass=("label-danger"):status == "Blacklisted"?$(this).addClass("black"): $(this).addClass("label-default")
 })
 
 function search(){//by name
@@ -34,18 +33,23 @@ $(".close").click(function(){//to close the (any) pop-up.
  $(this).parent().parent().css("display","none")
 })
 //fill the form of when and who called the applicant when admin presses the Called btn.
-$("#applicants #call-btn").click(function(){
-  var dt = new Date();
-  var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-  var date = dt.getFullYear() + "/" + dt.getMonth() + "/" + dt.getDate();
-  var pId = $(this).parent().siblings().html()
+$("#applicants .call-btn").click(function(){
+  let dt = new Date();
+  let time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+  let date = dt.getFullYear() + "/" + dt.getMonth() + "/" + dt.getDate();
+  let pId = $(this).parent().siblings().html();
+  let hrName = $(this).parent().parent().find("td.hr-name").html();
+  let interviewDate = $(this).parent().parent().find("td.interview-date").html()
+  let interviewTime = $(this).parent().parent().find("td.interview-time").html();
 
-  //$(this).addClass("true");  //i think this should be added after the call submit is already done and data of interview is stored
   $("#applicants .call-info").css("display","block");
 
   $('input[name="callTime"]').val(time);
   $('input[name="callDate"]').val(date);
-  $('input[name="pId"').val(pId)
+  $('input[name="pId"').val(pId);
+  $('input[name="hrName"').val(hrName);
+  $('input[name="interviewDate"').val(interviewDate);
+  $('input[name="interviewTime"').val(interviewTime);
   return false;//to stop propagation.
 }); 
 
@@ -53,7 +57,8 @@ $("#applicants #call-btn").click(function(){
 //drop down menu update applicant stored status in the database using ajax
 function updateStatus(id){
   //get the status chosen by the user form the dropdown menu
-  const newStatus = $("#updateStatus :selected").val();
+  const newStatus = $("#updateStatus :selected").html();
+  console.log("id=>",id,"newStat=>",newStatus)
 
   //make parameters to be sent in the ajax request
   const params = JSON.stringify({ id: id , status: newStatus});
@@ -66,5 +71,4 @@ function updateStatus(id){
   xhr.open('POST', url, true);
   xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
   xhr.send(params);
-
 }

@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                       <label>HR Called:</label>
-                      <input class="form-control" name="adminName" placeholder="HR's name.(eg:- Maryam Farrag)">
+                      <input class="form-control" name="hrName" placeholder="HR's name.(eg:- Maryam Farrag)">
                     </div>
                     <div class="form-group">
                       <label>Interview date:</label>
@@ -38,6 +38,10 @@
                     <div class="form-group">
                       <label>Interview Time:</label>
                       <input type="datetime" class="form-control" name="interviewTime" placeholder="hh:mm:ss">
+                    </div>
+                    <div class="form-group">
+                      <label>Notes:</label>
+                      <textarea class="form-control" name="note" placeholder="Any thoughts/notes.."></textarea>
                     </div>
                     <button id="submit-btn" class="btn btn-primary float-right" type="submit">Submit</button>
                   </form>
@@ -52,6 +56,7 @@
                             <th>Workshop</th>
                             <th>Second Workshop</th>
                             <th>Interview Date</th>
+                            <th>Interview Time</th>
                             <th>Interviewer</th>
                             <th>Notes</th>
                             <th>Calls</th>
@@ -62,37 +67,39 @@
                       <tr class="less-data">
                         <td><%= data[i].id %></td>
                         <td><%= data[i].name %></td>
-                        <td><select id = "updateStatus" class="status <%= data[i].id %>" onchange='updateStatus("<%= data[i].id %>")'>
-                        <%
-                          var options = ["Blacklisted" ,"Applied", "Called", "interviewed", "Accepted", "Rejected"];
-                          for ( var j = 0; j < 6; j++ )
-                          {
-                              var selected = ( data[i].status == j ) ? "selected" : "";
-                              %><option value="<%=j%>" <%=selected %>><%=options[j] %></option><%
-                          }
-                        %>
-                        </select></td>
                         <td><span class="status"><%= data[i].status%></span></td>
                         <td><%= data[i].firstChoice %></td>
                         <td><%= data[i].secondChoice %></td>
-                        <td><%= data[i].interviewDate %></td>
-                        <td><%= data[i].interviewer %></td>
+                        <td class="interview-date"><%= data[i].interviewDate %></td>
+                        <td class="interview-time"><%= data[i].interviewTime %></td>
+                        <td class="hr-name"><%= data[i].interviewer %></td>
                         <td><%= data[i].note %></td>
                         <%if(data[i].called == true){%>
-                          <td><button id="call-btn" class="btn <%= data[i].called %>">Called</button></td>
+                          <td><button class="btn call-btn <%= data[i].called %>">Called</button></td>
                         <%}else{%>
-                          <td><button id="call-btn" class="btn <%= data[i].called %>">Call</button></td>
+                          <td><button class="btn call-btn <%= data[i].called %>">Call</button></td>
                         <%}%>   
                       </tr>
                       <tr class='full-data'>
-                        <td class="data" colspan=13>
+                        <td class="data p-3" colspan=13>
                             <i class="close fa fa-times" aria-hidden="true"></i>
                             <span><strong>University:</strong> <%= data[i].university %></span>
                             <span><strong>Faculty: </strong><%= data[i].faculty %></span><br><br>
                             <span><strong>Phone: </strong><%= data[i].phone %></span>
                             <span><strong>E-mail: </strong><%= data[i].email%></span><br><br>
+                            <span><strong>Status: </strong>
+                              <select id = "updateStatus" class="status <%= data[i].id %>" onchange='updateStatus("<%= data[i].id %>")'>
+                                <%
+                                  var options = ["Blacklisted" ,"Applied", "Called", "interviewed", "Accepted", "Rejected"];
+                                  for ( var j = 0; j < 6; j++ )
+                                  {
+                                      var selected = ( data[i].status == j ) ? "selected" : "";
+                                      %><option value="<%=j%>" <%=selected %>><%=options[j] %></option><%
+                                  }
+                                %> 
+                                </select>
+                            </span>
                         </td>
-                       
                       </tr>
                     <%}%>
                    </tbody>

@@ -10,7 +10,6 @@
           <section class="content-header">
             <h1>
               Calendar
-              <small>Control panel</small>
             </h1>
             <ol class="breadcrumb">
               <li><a href="/"><i class="fa fa-dashboard"></i> Applicants</a></li>
@@ -21,13 +20,12 @@
           <!-- Main content -->
           <section class="content-calendar">
             <div class="row">
-              <div class="col-md-3">
+          <!--    <div class="col-md-3">
                 <div class="box box-solid">
                   <div class="box-header with-border">
                     <h4 class="box-title">Draggable Events</h4>
                   </div>
                   <div class="box-body">
-                    <!-- the events -->
                     <div id="external-events">
                       <div class="external-event bg-green">Lunch</div>
                       <div class="external-event bg-yellow">Go home</div>
@@ -42,16 +40,13 @@
                       </div>
                     </div>
                   </div>
-                  <!-- /.box-body -->
                 </div>
-                <!-- /. box -->
                 <div class="box box-solid">
                   <div class="box-header with-border">
                     <h3 class="box-title">Create Event</h3>
                   </div>
                   <div class="box-body">
                     <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
-                      <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
                       <ul class="fc-color-picker" id="color-chooser">
                         <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
                         <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
@@ -68,21 +63,19 @@
                         <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
                       </ul>
                     </div>
-                    <!-- /btn-group -->
                     <div class="input-group">
                       <input id="new-event" type="text" class="form-control" placeholder="Event Title">
       
                       <div class="input-group-btn">
                         <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
                       </div>
-                      <!-- /btn-group -->
                     </div>
-                    <!-- /input-group -->
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!-- /.col -->
-              <div class="col-md-9">
+             <!-- <div class="col-md-9">-->
+               <div>
                 <div class="box box-primary">
                   <div class="box-body no-padding">
                     <!-- THE CALENDAR -->
@@ -99,9 +92,6 @@
           </section>
           <!-- /.content -->
         </div>
-   
-   
-
 
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/jquery-ui.min.js"></script>
@@ -114,8 +104,31 @@
     <script src="/javascripts/moment.js"></script>
     <script src="/javascripts/fullcalendar.min.js"></script>
     <script src="/javascripts/index.js"></script>
-        <script>
-           $(function () {  
+      <script>
+      $(function () {  
+        let url ="http://localhost:3000/api/data"   
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function(){
+        var data = JSON.parse(this.response)
+
+        let schedualArr = []
+        for(let i in data){
+          let startVal = ''+data[i].interviewDate+'T'+data[i].interviewTime+''
+          let event ={
+            title: 'Interview '+data[i].name+'',
+          //  start: '2019-10-13T07:00:00',
+            start: startVal,
+            allDay         : false,
+            firstHour: 8,
+            backgroundColor: '#f56954!important', //red
+            borderColor    : '#f56954' //red
+          }
+          schedualArr.push(event)
+        }
+        console.log(schedualArr)
+        
+            
       /* initialize the external events
        -----------------------------------------------------------------*/
       function init_events(ele) {
@@ -128,7 +141,6 @@
   
           // store the Event Object in the DOM element so we can get to it later
           $(this).data('eventObject', eventObject)
-          console.log("todos=>",$(this).data('eventObject', eventObject))
   
           // make the event draggable using jQuery UI
           $(this).draggable({
@@ -162,10 +174,13 @@
           day  : 'day'
         },
         //Random default events
-        events    : [
+        events: schedualArr,
+      /*  events    :
+        
+        [
           {
-            title          : 'Interview "Name"',
-            start          : new Date(2019, 9, 1),
+            title          : 'Interview '+data[0].name+'',
+            start          : new Date(data[0].interviewDate),
             backgroundColor: '#f56954!important', //red
             borderColor    : '#f56954' //red
           },
@@ -207,11 +222,10 @@
             backgroundColor: '#3c8dbc!important', //Primary (light-blue)
             borderColor    : '#3c8dbc' //Primary (light-blue)
           }
-        ],
-        editable  : true,
+        ],*/
+        editable  : false,//so they can't change it using the callendar!
         droppable : true, // this allows things to be dropped onto the calendar !!!
         drop      : function (date, allDay) { // this function is called when something is dropped
-          console.log("yy")
           // retrieve the dropped element's stored Event Object
           var originalEventObject = $(this).data('eventObject')
   
@@ -272,6 +286,8 @@
         //Remove event from text input
         $('#new-event').val('')
       })
+    }
+        xhr.send()
     })
         </script>
     <!-- Page specific script -->
