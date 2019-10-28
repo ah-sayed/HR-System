@@ -67,16 +67,6 @@
                       <tr class="less-data">
                         <td><%= data[i].id %></td>
                         <td><%= data[i].name %></td>
-                    <!--    <td><select id = "updateStatus" class="status <%= data[i].id %>" onchange='updateStatus("<%= data[i].id %>")'>
-                        <%
-                          var options = ["Blacklisted" ,"Applied", "Called", "interviewed", "Accepted", "Rejected"];
-                          for ( var j = 0; j < 6; j++ )
-                          {
-                              var selected = ( data[i].status == j ) ? "selected" : "";
-                              %><option value="<%=j%>" <%=selected %>><%=options[j] %></option><%
-                          }
-                        %> 
-                        </select></td>-->
                         <td><span class="status"><%= data[i].status%></span></td>
                         <td><%= data[i].firstChoice %></td>
                         <td><%= data[i].secondChoice %></td>

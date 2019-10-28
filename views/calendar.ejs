@@ -99,9 +99,6 @@
           </section>
           <!-- /.content -->
         </div>
-   
-   
-
 
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/jquery-ui.min.js"></script>
@@ -114,8 +111,30 @@
     <script src="/javascripts/moment.js"></script>
     <script src="/javascripts/fullcalendar.min.js"></script>
     <script src="/javascripts/index.js"></script>
-        <script>
-           $(function () {  
+      <script>
+      $(function () {  
+        let url ="http://localhost:3000/api/data"   
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function(){
+        var data = JSON.parse(this.response)
+        console.log("boo",data)
+
+        let schedualArr = []
+        for(let i in data){
+          let event ={
+            title: 'Interview '+data[i].name+'',
+            start: new Date(data[i].interviewDate),
+            allDay         : false,
+            backgroundColor: '#f56954!important', //red
+            borderColor    : '#f56954' //red
+          }
+          schedualArr.push(event)
+          console.log(data[i],"test=>")
+        }
+        console.log(schedualArr)
+        
+            
       /* initialize the external events
        -----------------------------------------------------------------*/
       function init_events(ele) {
@@ -128,7 +147,6 @@
   
           // store the Event Object in the DOM element so we can get to it later
           $(this).data('eventObject', eventObject)
-          console.log("todos=>",$(this).data('eventObject', eventObject))
   
           // make the event draggable using jQuery UI
           $(this).draggable({
@@ -162,10 +180,13 @@
           day  : 'day'
         },
         //Random default events
-        events    : [
+        events: schedualArr,
+      /*  events    :
+        
+        [
           {
-            title          : 'Interview "Name"',
-            start          : new Date(2019, 9, 1),
+            title          : 'Interview '+data[0].name+'',
+            start          : new Date(data[0].interviewDate),
             backgroundColor: '#f56954!important', //red
             borderColor    : '#f56954' //red
           },
@@ -207,11 +228,10 @@
             backgroundColor: '#3c8dbc!important', //Primary (light-blue)
             borderColor    : '#3c8dbc' //Primary (light-blue)
           }
-        ],
-        editable  : true,
+        ],*/
+        editable  : false,//so they can't change it using the callendar!
         droppable : true, // this allows things to be dropped onto the calendar !!!
         drop      : function (date, allDay) { // this function is called when something is dropped
-          console.log("yy")
           // retrieve the dropped element's stored Event Object
           var originalEventObject = $(this).data('eventObject')
   
@@ -272,6 +292,8 @@
         //Remove event from text input
         $('#new-event').val('')
       })
+    }
+        xhr.send()
     })
         </script>
     <!-- Page specific script -->

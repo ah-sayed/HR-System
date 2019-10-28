@@ -1,5 +1,5 @@
 ////////////////////////////////////NOT USED BS KHAYFA AMS7O!!!!!!!!!///////////////////////
-/*var express = require('express');
+var express = require('express');
 var router = express.Router();
 const participants = require('../models/Participants')
 
@@ -12,10 +12,9 @@ router.get('/', function (req, res, next) {
     participants.findAll()
     .then(applicants => {
       const data = JSON.stringify(applicants, null, 1);
-      console.log("dattaaa",data);
       return res.end(data);
     })
     
   });
 
-  module.exports = router;*/
+  module.exports = router;

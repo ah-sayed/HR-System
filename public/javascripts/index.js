@@ -68,3 +68,15 @@ function updateStatus(id){
   xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
   xhr.send(params);
 }
+
+///test////
+const url = '/calendar';
+
+const xhr = new XMLHttpRequest();
+xhr.open('GET', url, true);
+xhr.onload = function(){
+  var data = this
+  console.log("boo",data)
+}
+xhr.send()
+
