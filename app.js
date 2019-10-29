@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var databaseApiRounter = require('./routes/database');
 var updateRouter = require('./routes/update');
+const interviewsRouter = require("./routes/interviews");
 var calendarRouter = require('./routes/calendar');
 const bodyparser = require("body-parser");
 const db = require('./config/database');
@@ -29,6 +30,7 @@ app.use('/users', usersRouter);
 app.use('/calendar', calendarRouter);
 app.use('/api/data', databaseApiRounter);
 app.use('/update', updateRouter);
+app.use('/interviews', interviewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

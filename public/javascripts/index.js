@@ -6,25 +6,6 @@ $(".status").each(function(){
   let status = $(this).html();
   status == "Called"? $(this).addClass("label-primary"): status == "Applied"? $(this).addClass("label-info"): status == "Interviewed"?$(this).addClass("label-warning"): status == "Accepted"?$(this).addClass("label-success"): status == "Rejected"?$(this).addClass=("label-danger"):status == "Blacklisted"?$(this).addClass("black"): $(this).addClass("label-default")
 })
-
-function search(){//by name
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("search");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("applicants");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[1];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
-    }
-}
 $("#applicants .less-data").click(function(){//to show the full data pop-up.
   $(this).next().css("display","block")
 })
@@ -53,7 +34,24 @@ $("#applicants .call-btn").click(function(){
   return false;//to stop propagation.
 }); 
 
-
+function search(){//by name
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("applicants");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 //drop down menu update applicant stored status in the database using ajax
 function updateStatus(id){
   //get the status chosen by the user form the dropdown menu
@@ -71,4 +69,20 @@ function updateStatus(id){
   xhr.open('POST', url, true);
   xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
   xhr.send(params);
+}
+
+function arrivalTime(){
+  let interviewTime = $(".int-time span strong").html().split(":")
+  let time = ''+new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()+''
+  let arrivalByHours = Number(interviewTime[0]) - new Date().getHours()
+  let arrivalByMins = Number(interviewTime[1]) - new Date().getMinutes()
+  let arrivalBySecs = Number(interviewTime[2]) - new Date().getSeconds()
+  $("#arrival").html(time)
+
+  if(arrivalByHours < 0){
+    $("#late-or-early").html("Late by: "+Math.abs(arrivalByHours)+"H, "+Math.abs(arrivalByMins)+"M, "+Math.abs(arrivalBySecs)+"S")
+  }
+  else{
+    $("#late-or-early").html("Early by: "+Math.abs(arrivalByHours)+"H, "+Math.abs(arrivalByMins)+"M, "+Math.abs(arrivalBySecs)+"S")
+  }
 }
