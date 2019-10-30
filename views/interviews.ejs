@@ -6,15 +6,31 @@
         <%include navbar %>
         <section class="content" id="interview">
             <h1 class="">Interview <%= data[0].name %></h1>
-            <div class="int-time">
-                <span class="pr-2 border-right">Interview time: <strong><%= data[0].interviewTime%></strong></span>
-                <span><button onclick="arrivalTime()" class="btn btn-outline-success" id="time">Arrived</button></span>
+            <div class="intterview">
+                <span class="pr-2 border-right">Interview Date: <strong class="int-date"><%= data[0].interviewDate%></strong></span>
+                <span class="pr-2 border-right">Interview time: <strong class="int-time"><%= data[0].interviewTime%></strong></span>
+                <span><button onclick="arrivalTime()" class="btn btn-outline-success" id="time">Arrived</button></span><br>
+                <strong class="pr-2 border-right"><%= data[0].firstChoice%></strong>
+                <strong class="pl-2"><%= data[0].secondChoice%></strong><br><br>
+                <span class="pr-2 border-right">University: <strong><%=data[0].university %></strong></span>
+                <span class="pr-2">Faculty: <strong><%=data[0].faculty %></strong></span>
+
             </div>
-            <div class="arrived-at">
-                <span>Arrived at: <span id="arrival"></span></span><br>
-                <span id="late-or-early"></span>
-            </div>
+           
             <hr class="w-50">
+            <div class="container">
+                <form>
+                    <div class="form-group">
+                        <label>interviewee Arrival time:</label>
+                        <input class="form-control" name="arrivalTime">
+                    </div>
+                    <div class="form-group">
+                        <label>interview notes:</label>
+                        <textarea class="form-control late-or-early" name="interviewNotes"></textarea>
+                    </div>
+                    <button class="btn btn-primary float-right">Submit</button>
+                </form>
+            </div>
         </section>
 
 
@@ -31,29 +47,5 @@
         <script src="/javascripts/moment.js"></script>
         <script src="/javascripts/fullcalendar.min.js"></script>
         <script src="/javascripts/index.js"></script>
-
-        <script>
-       /*    function checkTime(i) {
-            if (i < 10) {
-                i = "0" + i;
-            }
-            return i;
-            }
-
-            function startTime() {
-            var today = new Date();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            // add a zero in front of numbers<10
-            m = checkTime(m);
-            s = checkTime(s);
-            document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
-            t = setTimeout(function() {
-                startTime()
-            }, 500);
-            }
-            startTime(); */
-        </script>
     </body>
 </html>
