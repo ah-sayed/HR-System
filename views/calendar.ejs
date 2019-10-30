@@ -110,14 +110,13 @@
         const xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
         xhr.onload = function(){
-        var data = JSON.parse(this.response)
+        var data = JSON.parse(this.response);
 
-        let schedualArr = []
+        let schedualArr = [];
         for(let i in data){
           let startVal = ''+data[i].interviewDate+'T'+data[i].interviewTime+''
           let event ={
             title: 'Interview '+data[i].name+'',
-          //  start: '2019-10-13T07:00:00',
             start: startVal,
             allDay         : false,
             firstHour: 8,
@@ -126,9 +125,7 @@
             borderColor    : '#f56954' //red
           }
           schedualArr.push(event)
-        }
-        console.log(schedualArr)
-        
+        }        
             
       /* initialize the external events
        -----------------------------------------------------------------*/
@@ -225,7 +222,7 @@
           }
         ],*/
         editable  : false,//so they can't change it using the callendar!
-        droppable : true, // this allows things to be dropped onto the calendar !!!
+      /*  droppable : true, // this allows things to be dropped onto the calendar !!!
         drop      : function (date, allDay) { // this function is called when something is dropped
           // retrieve the dropped element's stored Event Object
           var originalEventObject = $(this).data('eventObject')
@@ -249,11 +246,11 @@
             $(this).remove()
           }
   
-        }
+        } */
       })
   
       /* ADDING EVENTS */
-      var currColor = '#3c8dbc' //Red by default
+     /* var currColor = '#3c8dbc' //Red by default
       //Color chooser button
       var colorChooser = $('#color-chooser-btn')
       $('#color-chooser > li > a').click(function (e) {
@@ -262,7 +259,7 @@
         currColor = $(this).css('color')
         //Add color effect to button
         $('#add-new-event').css({ 'background-color': currColor, 'border-color': currColor })
-      })
+      })*/
       $('#add-new-event').click(function (e) {
         e.preventDefault()
         //Get value and make sure it is not null
@@ -287,7 +284,7 @@
         //Remove event from text input
         $('#new-event').val('')
       })
-    }
+    } 
         xhr.send()
     })
         </script>

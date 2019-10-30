@@ -69,7 +69,7 @@ nav i{
 }
 #applicants .call-info .info-container{
   position: absolute;
-  top: 15%;
+  top: 10%;
   left: 50%;
   margin-top: -50px;
   margin-left: -50px;
@@ -94,8 +94,8 @@ nav i{
 #applicants .full-data .data{
   position: absolute;
   border-radius: 10px;
-  top: 50%;
-  left: 45%;
+  top: 40%;
+  left: 46%;
   margin-top: -50px;
   margin-left: -50px;
   background-color:#f1f1f1;

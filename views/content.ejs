@@ -5,7 +5,7 @@
             <div class="box-header">
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" id="search" name="table_search" class="form-control pull-right" onkeyup="search()" placeholder="Search by name">
+                  <input type="text" id="search" name="table_search" class="form-control pull-right" onkeyup="search()" placeholder="Search by filters">
                 </div>
               </div>
             </div>
@@ -28,8 +28,12 @@
                         <input class="form-control" name="callTime">
                     </div>
                     <div class="form-group">
-                      <label>HR Called:</label>
-                      <input class="form-control" name="hrName" placeholder="HR's name.(eg:- Maryam Farrag)">
+                      <label>HR Called:</label><!--Not the same as interviewer!!-->
+                      <input class="form-control" name="hrCalled" placeholder="HR's name.(eg:- Maryam Farrag)">
+                    </div>
+                    <div class="form-group">
+                      <label>Interviewer:</label><!--Should be visible if the admin is a head or a vice!!-->
+                      <input class="form-control" name="interviewer" placeholder="eg:- John Doe">
                     </div>
                     <div class="form-group">
                       <label>Interview date:</label>
@@ -47,12 +51,13 @@
                   </form>
                 </div>
               </div>     
-              <table class="table table-hover">
+              <table id="myTable" class="table table-hover">
                    <thead>
                         <tr>
                             <th>ID</th>
-                            <th>User</th>
+                            <th>Applicant</th>
                             <th>Status</th>
+                            <th>Phone</th>
                             <th>Workshop</th>
                             <th>Second Workshop</th>
                             <th>Interview Date</th>
@@ -68,6 +73,7 @@
                         <td><%= data[i].id %></td>
                         <td><%= data[i].name %></td>
                         <td><span class="status"><%= data[i].status%></span></td>
+                        <td><%= data[i].phone %></td>
                         <td><%= data[i].firstChoice %></td>
                         <td><%= data[i].secondChoice %></td>
                         <td class="interview-date"><%= data[i].interviewDate %></td>
@@ -81,22 +87,21 @@
                         <%}%>   
                       </tr>
                       <tr class='full-data'>
-                        <td class="data p-3" colspan=13>
+                        <td class="data p-4" colspan=13>
                             <i class="close fa fa-times" aria-hidden="true"></i>
                             <span><strong>University:</strong> <%= data[i].university %></span>
                             <span><strong>Faculty: </strong><%= data[i].faculty %></span><br><br>
                             <span><strong>Phone: </strong><%= data[i].phone %></span>
                             <span><strong>E-mail: </strong><%= data[i].email%></span><br><br>
+                            <span><strong>HR called: </strong><%= data[i].hrCalled%></span><br><br>
                             <span><strong>Status: </strong>
-                              <select id = "updateStatus" class="status <%= data[i].id %>" onchange='updateStatus("<%= data[i].id %>")'>
-                                <%
-                                  var options = ["Blacklisted" ,"Applied", "Called", "interviewed", "Accepted", "Rejected"];
-                                  for ( var j = 0; j < 6; j++ )
-                                  {
-                                      var selected = ( data[i].status == j ) ? "selected" : "";
-                                      %><option value="<%=j%>" <%=selected %>><%=options[j] %></option><%
-                                  }
-                                %> 
+                              <select  class="status" id="<%= data[i].id %>">
+                                <option value="Applied">Applied</option>
+                                <option value="Called">Called</option>
+                                <option value="Interviewed">Interviewed</option>
+                                <option value="Accepted">Accepted</option>
+                                <option value="Rejected">Rejected</option>
+                                <option value="Blacklisted">Blacklisted</option>
                                 </select>
                             </span>
                         </td>

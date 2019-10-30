@@ -23,7 +23,8 @@ router.post('/', function (req, res, next) {
   participants.update({ 
     callDate: req.body.callDate,
     callTime: req.body.callTime,
-    interviewer: req.body.hrName,//#changed the Interviewer type to String to store names not Ints#//
+    hrCalled: req.body.hrCalled,
+    interviewer: req.body.interviewer,//remember to make sure the admin entered this value has position Head or Vice.
     interviewDate: req.body.interviewDate,
     interviewTime: req.body.interviewTime,
     note: req.body.note,

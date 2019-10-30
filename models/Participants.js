@@ -29,6 +29,9 @@ const Participant = db.define('participants', {
     called:{
         type : sequelize.BOOLEAN
     },
+    hrCalled:{
+        type: sequelize.STRING
+    },
     interviewDate:{
         type : sequelize.DATE,
         //defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
