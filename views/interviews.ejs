@@ -5,18 +5,18 @@
         <% include sidebar%>
         <%include navbar %>
         <section class="content" id="interview">
-            <h1 class="">Interview <%= data[0].name %></h1>
+            <% for(i=0; i < data.length; i++){%>
+            <h1 class="">Interview <%= data[i].name %></h1>
             <div class="intterview">
-                <span class="pr-2 border-right">Interview Date: <strong class="int-date"><%= data[0].interviewDate%></strong></span>
-                <span class="pr-2 border-right">Interview time: <strong class="int-time"><%= data[0].interviewTime%></strong></span>
+                <span class="pr-2 border-right">Interview Date: <strong class="int-date"><%= data[i].interviewDate%></strong></span>
+                <span class="pr-2 border-right">Interview time: <strong class="int-time"><%= data[i].interviewTime%></strong></span>
                 <span><button onclick="arrivalTime()" class="btn btn-outline-success" id="time">Arrived</button></span><br>
-                <strong class="pr-2 border-right"><%= data[0].firstChoice%></strong>
-                <strong class="pl-2"><%= data[0].secondChoice%></strong><br><br>
-                <span class="pr-2 border-right">University: <strong><%=data[0].university %></strong></span>
-                <span class="pr-2">Faculty: <strong><%=data[0].faculty %></strong></span>
+                <strong class="pr-2 border-right"><%= data[i].firstChoice%></strong>
+                <strong class="pl-2"><%= data[i].secondChoice%></strong><br><br>
+                <span class="pr-2 border-right">University: <strong><%=data[i].university %></strong></span>
+                <span class="pr-2">Faculty: <strong><%=data[i].faculty %></strong></span>
 
             </div>
-           
             <hr class="w-50">
             <div class="container">
                 <form>
@@ -31,9 +31,10 @@
                     <button class="btn btn-primary float-right">Submit</button>
                 </form>
             </div>
+            <%}%>
         </section>
-
-
+        
+        
 
 
         <script src="/javascripts/jquery.min.js"></script>

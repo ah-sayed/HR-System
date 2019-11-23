@@ -30,7 +30,7 @@ const Participant = db.define('participants', {
         type : sequelize.BOOLEAN
     },
     hrCalled:{
-        type: sequelize.STRING
+        type: sequelize.BOOLEAN
     },
     interviewDate:{
         type : sequelize.DATE,

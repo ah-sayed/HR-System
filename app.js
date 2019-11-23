@@ -51,7 +51,7 @@ app.use(function(err, req, res, next) {
 //test the connection with the database
 db.authenticate()//will cause an error if you don't have the database  :D "bdeehyat"
 .then(()=>console.log('connected to database'))
-.catch(()=>console.log('Error' + err));
+.catch((err)=>console.log('Error' + err));
 module.exports = app;
 
 

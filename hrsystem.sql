@@ -39,6 +39,7 @@ CREATE TABLE `participants` (
   `secondChoice` varchar(128) NOT NULL,
   `phone` varchar(128) NOT NULL,
   `called` tinyint(1) NOT NULL,
+  `hrCalled` tinyint(1) NOT NULL,
   `interviewDate` date NOT NULL,
   `interviewTime` time NOT NULL,
   `callDate` date NOT NULL,
