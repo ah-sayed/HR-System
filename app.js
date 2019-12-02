@@ -9,6 +9,8 @@ var databaseApiRounter = require('./routes/database');
 var updateRouter = require('./routes/update');
 const interviewsRouter = require("./routes/interviews");
 var calendarRouter = require('./routes/calendar');
+var memberRegisterRouter = require('./routes/register');
+var memberLoginRouter = require('./routes/login');
 const bodyparser = require("body-parser");
 const db = require('./config/database');
 const sequelize = require("sequelize");
@@ -28,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/calendar', calendarRouter);
+app.use('/register', memberRegisterRouter);
+app.use('/login', memberLoginRouter);
 app.use('/api/data', databaseApiRounter);
 app.use('/update', updateRouter);
 app.use('/interviews', interviewsRouter);
@@ -56,4 +60,4 @@ module.exports = app;
 
 
 //to listen to this port on the local host
-app.listen(3000);
+app.listen(5000);
