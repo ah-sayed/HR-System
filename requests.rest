@@ -1,0 +1,25 @@
+@host = http://localhost:5001
+
+###
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "ahmed@ieee.org",
+    "password": "123456789"
+}
+
+###
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+    "name": "Ahmed Sayed",
+    "email": "ahmed@ieee.org",
+    "password": "123456789",
+    "confirmPassword": "123456789",
+    "phone": "01234567891",
+    "university": "Cairo",
+    "faculty": "Science",
+    "year": "First"
+}

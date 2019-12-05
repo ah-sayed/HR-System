@@ -9,16 +9,10 @@ module.exports = {
       Example:
       */
         return queryInterface.bulkInsert(
-            'Users',
+            'Passwords',
             [
                 {
-                    name: 'Ahmed',
-                    phone: '0123456789',
-                    email: 'a@ahmed.com',
-                    committee: 'IT',
-                    university: 'Cairo',
-                    faculty: 'Science',
-                    position: 'member',
+                    hash: 'af231sa2dfg56sd4131g8as7fg3s41dg3486s4v5',
                 },
             ],
             {
@@ -34,6 +28,6 @@ module.exports = {
 
       Example:
       */
-        return queryInterface.bulkDelete('Users', null, {});
+        return queryInterface.bulkDelete('Password', null, {});
     },
 };
