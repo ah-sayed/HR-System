@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const participants = require('../models/Participants');
+const participants = require('../models/participants');
 /*here the ajax database updating functions will exist*/ 
 
 router.post('/status', function (req, res, next) {
