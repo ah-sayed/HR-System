@@ -1,7 +1,7 @@
 ////////////////////////////////////NOT USED BS KHAYFA AMS7O!!!!!!!!!///////////////////////
 var express = require('express');
 var router = express.Router();
-const participants = require('../models/Participants')
+const participants = require('../models/participants')
 
 //that name should be changed for security purposes
 router.get('/', function (req, res, next) {
